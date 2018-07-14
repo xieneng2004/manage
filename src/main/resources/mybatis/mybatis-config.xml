@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+    <!--mybatis配置文件-->
+
+<configuration>
+    <!-- 注意此配置文件内的元素的  -->
+    <!-- 引入database.properties文件 -->
+    <properties resource="JDBC.properties"/>
+
+    <!--让后台输出sql语句-->
+    <settings>
+        <setting name="logImpl" value="log4j"/>
+    </settings>
+
+    <!--类名当做别名直接扫描-->
+    <typeAliases>
+        <package name="java.com.entity"/>
+    </typeAliases>
+
+</configuration>
