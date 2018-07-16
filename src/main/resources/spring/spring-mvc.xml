@@ -10,17 +10,17 @@
     <!--开启注解驱动-->
     <mvc:annotation-driven/>
 
-    <!--组件扫描，并添加到sprin容器中，这里指定扫描Controler-->
+    <!--组件扫描，并添加到spring容器中，这里指定扫描Controler-->
     <context:component-scan base-package="com.controller"/>
 
     <!--静态资源解析包括 ：js、css、img、..-->
     <!--<mvc:resources mapping="/js/" location="/js/**"/>-->
 
+    <!--全局错误信息处理器,只要实现HandlerExceptionResolver接口就是全局异常处理器-->
+    <bean class="com.exception.CustomExceptionResolver"/>
+
     <!--视图解析器-->
-    <!--
-    需要配置解析jsp的视图解析器
-    jsp解析，默认使用jstl标签解析
-    -->
+    <!--需要配置解析jsp的视图解析器,jsp解析默认使用jstl标签解析-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--拼接视图地址的前缀和后缀-->
         <property name="prefix" value="/webpage/jsp/"/>
