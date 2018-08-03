@@ -2,8 +2,68 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
   <display-name>Archetype Created Web Application</display-name>
+
+  <!--log4j日志配置-->
+  <context-param>
+  <param-name>log4jConfigLocation</param-name>
+  <param-value>classpath:properties/log4j.properties</param-value>
+  </context-param>
+  <listener>
+  <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+
+
+  <!--配置监听器contextLoaderListener-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!--加载spring容器-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value> classpath:spring/applicationContext*.xml</param-value>
+  </context-param>
+
+
+  <!--加载SpringMVC前端控制器-->
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring/spring-mvc.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <!--会拦截URL中带"/"的请求-->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+
+  <!--添加乱码过滤器-->
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+
+
+  <!--设置欢迎页-->
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>

@@ -13,9 +13,9 @@
     <!--组件扫描，并添加到spring容器中，这里指定扫描Controler-->
     <context:component-scan base-package="com.controller"/>
 
+
     <!--静态资源解析包括 ：js、css、img、..-->
     <!--<mvc:resources mapping="/js/" location="/js/**"/>-->
-
     <!--全局错误信息处理器,只要实现HandlerExceptionResolver接口就是全局异常处理器-->
     <bean class="com.exception.CustomExceptionResolver"/>
 

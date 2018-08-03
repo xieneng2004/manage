@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <title>欢迎使用</title>
 
@@ -27,17 +27,17 @@
     <div class="row" style="margin-top: 300px">
         <div class="col-md-4"></div>
         <div class="col-md-4 login-area" id="login-box">
-            <form class="form-horizontal" role="form" action="#" id="topForm" method="post">
+            <form class="form-horizontal" role="form" action="/user/login" id="topForm" method="post">
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">用户名</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="username" placeholder="请输入用户名">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">密码</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="password" placeholder="请输入密码">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
                     </div>
                 </div>
 

@@ -6,7 +6,7 @@
 <configuration>
     <!-- 注意此配置文件内的元素的  -->
     <!-- 引入database.properties文件 -->
-    <properties resource="JDBC.properties"/>
+    <!--<properties resource="JDBC.properties"/>-->
 
     <!--让后台输出sql语句-->
     <settings>
