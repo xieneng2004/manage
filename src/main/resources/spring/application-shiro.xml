@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--扫描shiro组件-->
+    <context:component-scan base-package="com.realm"/>
+
+    <!--自定义安全数据源，用来实现自定义的登录验证、角色验证、权限验证-->
+    <bean id="loginRealm" class="com.realm.loginRealm"/>
+
+    <!--安全管理器-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="loginRealm"/>
+    </bean>
+
+    <!--shiro过滤器,id要和web.xml中配置的一致-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--配置安全管理器-->
+        <property name="securityManager" ref="securityManager"/>
+        <!--身份认证失败时，跳转到的地址，一般是登录页-->
+        <property name="loginUrl" value="/login"/>
+        <!-- 身份认证成功跳转的地址，一般登录成功后会跳转到系统首页 -->
+        <property name="successUrl" value="/"/>
+        <!-- 权限认证失败跳转的地址 ，用来提示当前用户没有操作权限，可以不需要-->
+        <!--<property name="unauthorizedUrl" value="/login/unauthorized" />-->
+
+        <property name="filterChainDefinitions">
+            <!--anon 表示匿名访问，不需要认证以及授权 -->
+            <!--authc表示需要认证 没有进行身份认证是不能进行访问的 -->
+            <!--authc，roles[admin]表示是admin角色的用户才能访问 -->
+            <value>
+                /login = anon
+            </value>
+        </property>
+    </bean>
+</beans>

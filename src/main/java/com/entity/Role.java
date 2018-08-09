@@ -1,9 +1,9 @@
 package com.entity;
 
 public class Role {
-    private Integer roleId;
-    private String roleName;
-    private String permission;
+    private Integer roleId; //角色id
+    private String roleName;    //角色名
+    private String permission;  //角色权限
 
     public Integer getRoleId() {
         return roleId;
