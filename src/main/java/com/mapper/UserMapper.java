@@ -1,5 +1,6 @@
 package com.mapper;
 
+import com.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 
@@ -9,4 +10,10 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserMapper {
     public Integer login(@Param("userName") String userName, @Param("passWord") String passWord);
+
+    public String findRoles(@Param("userId")Integer userId);
+
+    public String findPermissions(@Param("userId")Integer userId);
+
+    public User getUserInfo(@Param("userName")String userName);
 }
